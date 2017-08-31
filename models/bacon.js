@@ -12,7 +12,7 @@ var bacon = {
   update: function(id, cb) {
     var condition = "id=" + id;
     orm.update("itemList", {
-      devoured: true
+      sold: true
     }, condition, cb);
   }
 };

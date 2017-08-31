@@ -20,7 +20,7 @@ router.get("/bacon", function(req, res) {
 // post route -> back to index
 router.post("/bacon/create", function(req, res) {
   // takes the request object using it as input for buger.addbacon
-  bacon.create(req.body.bacon, function(result) {
+  bacon.create(req.body.item_name, function(result) {
     // wrapper for orm.js that using MySQL insert callback will return a log to console,
     // render back to index with handle
     console.log(result);
