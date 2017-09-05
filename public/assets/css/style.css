@@ -1,11 +1,14 @@
 body {
-  width: 99%;
+  /*width: 99%;
   height: 900px;
-  background-color: #fff;
+  */
+  background-color: #B34348;
 }
 
 #top-bar {
-  margin-top: 28px;
+  margin: 5px;
+  display: inline-block;
+  float: left;
 }
 
 .spacing-reset {
@@ -58,11 +61,103 @@ body {
   padding-bottom: 20px;
 }
 
+.buy-it-btn-color {
+  background-color:#E58966;
+  color: #9A213A;
+  border-radius: 25px;
+}
+
+.navbar-header {
+  background color: #E58966;
+}
+
+.navbar-brand {
+  padding:0;
+  margin:0;
+}
+
+.baconMan {
+  width: 50px;
+  height: 50px;
+  border-radius: 35%;
+}
+
+.clearFloat {
+  clear:both;
+}
+
+.brand-text {
+  height: 40px;
+  display: inline;
+  font-family: Kanit;
+  font-size: 30px;
+  margin-left: 8px;
+}
+
+.baconstrips {
+  height: 140px;
+  width: 140px;
+  float:right;
+}
+
 #text-enter-button {
   margin-top: 10px;
   margin-bottom: 18px;
 }
 
 h1 {
-  color: #f30;
+  font-size: 2em;
+  color: #9A213A;
+  margin: 15px;
+}
+
+.navbar-menu {
+  font-family: Roboto;
+  font-weight: bold;
+  color: #9A213A;
+}
+
+.fa-facebook-square {
+  color: #CC6657;
+  padding: 1px;
+  margin: 1px;
+}
+
+.navbar .nav > li > a {
+    font-family: Roboto;
+    font-weight: bold;
+    color: #9A213A;
+    transition-duration: 0.4s;
+}
+
+.navbar .nav > li > a:hover {
+    font-family: Roboto;
+    font-weight: bold;
+    color: #FFAC75;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 6px 20px;
+    box-sizing: border-box;
+    border: 1px solid #9A213A;
+    border-radius: 4px;
+}
+
+.navbar-search::placeholder {
+    color: #9A213A; 
+}
+
+/*.navbar-search {
+    color: #9A213A; 
+}*/
+
+.navbar-btn {
+      border: 1px solid #9A213A;
+
+}
+
+.navbar-btn:hover {
+      border: 1px solid #CC6657;
+
 }
