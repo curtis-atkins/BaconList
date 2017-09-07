@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS transactionList;
 CREATE TABLE itemList (
 	id INT NOT NULL AUTO_INCREMENT,
 	item_name VARCHAR(255) NOT NULL,
-	seller_id INT NOT NULL,
+	/*seller_id INT NOT NULL,*/
 	sold BOOL DEFAULT false,
 	PRIMARY KEY (id)
 );
