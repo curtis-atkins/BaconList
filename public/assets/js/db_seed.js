@@ -17,7 +17,6 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId + "\n");
-    // createProduct();
   });
 
 request("https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=BaharRos-Baconx27-PRD-eb7edec1b-14ac140f&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=bacon&paginationInput.entriesPerPage=50&GLOBAL-ID=EBAY-US&siteid=0", function (error, response, body) {

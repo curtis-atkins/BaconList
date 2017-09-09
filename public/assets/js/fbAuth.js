@@ -68,7 +68,7 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      document.getElementById('sign-in').innerHTML =
+      document.getElementById('sign-in-btn').innerHTML =
          "USER: " + response.name;
     });
   }
