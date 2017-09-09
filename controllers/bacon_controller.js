@@ -3,6 +3,14 @@ var express = require("express");
 var router = express.Router();
 var bacon = require("../models/bacon");
 
+router.get("/login", function(req, res) {
+  bacon.all(function(data) {
+    var hbsObject = { bacon: data };
+    res.render("login", hbsObject);
+  });
+});
+
+
 router.get("/", function(req, res) {
   res.redirect("/bacon");
 });
