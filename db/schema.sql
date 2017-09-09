@@ -8,8 +8,9 @@ DROP TABLE IF EXISTS transactionList;
 
 CREATE TABLE itemList (
 	item_id INT NOT NULL AUTO_INCREMENT,
-	item_name VARCHAR(255) NOT NULL,
-	item_price DECIMAL(12,2) DEFAULT NULL,
+	item_name VARCHAR(255) DEFAULT NULL,
+	item_price DECIMAL(12,2) DEFAULT 0.00,
+	item_description VARCHAR(300) DEFAULT NULL,
 	item_image VARCHAR(255) DEFAULT NULL,
 	seller_id INT DEFAULT NULL,
 	sold BOOL DEFAULT false,
