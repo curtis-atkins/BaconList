@@ -44,9 +44,16 @@ router.get("/trade", function(req, res) {
 });
 
 router.post("/bacon/create", function(req, res) {
-  bacon.create(req.body.item_name, function(result) {
+  console.log(JSON.stringify(req.body));
+  bacon.create(
+    {
+      item_name: req.body.item_name,
+      item_price: req.body.item_price,
+      item_description: req.body.item_description,
+      item_image: req.body.item_image
+    }, function(result) {
     console.log(result);
-    res.redirect("/");
+    res.redirect("/sell");
   });
 });
 
