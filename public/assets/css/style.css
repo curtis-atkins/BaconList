@@ -51,6 +51,18 @@ body {
   font-size: 38px;
 }
 
+#text-enter-button {
+      border: 1px solid #9A213A;
+}
+
+#text-enter-button:hover {
+      border: 1px solid #CC6657;
+
+}
+
+
+}
+
 .task {
   border-color: black;
   border-style: solid;
@@ -103,6 +115,7 @@ body {
 #text-enter-button {
   margin-top: 10px;
   margin-bottom: 18px;
+  color: #9A213A;
 }
 
 h1 {
@@ -124,40 +137,48 @@ h1 {
 }
 
 .navbar .nav > li > a {
-    font-family: Roboto;
-    font-weight: bold;
-    color: #9A213A;
-    transition-duration: 0.4s;
+  font-family: Roboto;
+  font-weight: bold;
+  color: #9A213A;
+  transition-duration: 0.4s;
 }
 
 .navbar .nav > li > a:hover {
-    font-family: Roboto;
-    font-weight: bold;
-    color: #FFAC75;
+  font-family: Roboto;
+  font-weight: bold;
+  color: #FFAC75;
 }
 
 input[type=text] {
-    width: 100%;
-    padding: 6px 20px;
-    box-sizing: border-box;
-    border: 1px solid #9A213A;
-    border-radius: 4px;
+  width: 100%;
+  padding: 6px 20px;
+  box-sizing: border-box;
+  border: 1px solid #9A213A;
+  border-radius: 4px;
 }
 
 .navbar-search::placeholder {
+  color: #9A213A; 
+}
+
+.navbar-search {
+  color: #9A213A; 
+}
+
+.sell-search {
     color: #9A213A; 
 }
 
-/*.navbar-search {
-    color: #9A213A; 
-}*/
-
 .navbar-btn {
-      border: 1px solid #9A213A;
-
+  border: 1px solid #9A213A;
+  color: #9A213A;
 }
 
 .navbar-btn:hover {
-      border: 1px solid #CC6657;
+  border: 1px solid #CC6657;
 
+}
+
+.sellPageMessage {
+  color: #FFAC75;
 }
