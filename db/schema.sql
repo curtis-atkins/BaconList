@@ -9,9 +9,9 @@ DROP TABLE IF EXISTS transactionList;
 CREATE TABLE itemList (
 	item_id INT NOT NULL AUTO_INCREMENT,
 	item_name VARCHAR(255) NOT NULL,
-	/*seller_id INT NOT NULL,*/
+	seller_id INT DEFAULT NULL,
 	sold BOOL DEFAULT false,
-	PRIMARY KEY (id)
+	PRIMARY KEY (item_id)
 );
 
 CREATE TABLE userList (

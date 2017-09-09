@@ -11,9 +11,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=" navbar-menu"><a href="#">BUY <span class="sr-only">(current)</span></a></li>
-        <li class= "navbar-menu"><a href="#">SELL</a></li>
-         <li class= "navbar-menu"><a href="#">TRADE</a></li>
+        <li class=" navbar-menu"><a href="/buy">BUY <span class="sr-only">(current)</span></a></li>
+        <li class= "navbar-menu"><a href="/sell">SELL</a></li>
+         <li class= "navbar-menu"><a href="/trade">TRADE</a></li>
         <li class="dropdown navbar-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -29,7 +29,7 @@
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control navbar-menu navbar-search" placeholder="WHAT'S SIZZLIN'?">
+          <input type="text" class="form-control navbar-menu navbar-search" placeholder="What to sell?">
         </div>
         <button type="submit" class="btn btn-default navbar-btn">SEARCH</button>
       </form>
@@ -55,30 +55,6 @@
 		<div class="clearFloat">
 		</div>
 		<div class="col-xs-6 text-center" class="task">
-			<div class="row">
-			  {{#each bacon}}
-			  	{{#unless this.sold}}
-				<div class="col-xs-9 text-center">
-					<pre>{{this.id}}. {{this.item_name}}
-					</pre>
-				  		<!-- {{this.Date}} -->
-				</div>
-				<div class="col-xs-3 text-center">
-					<form method="POST" action="/bacon/update?_method=PUT" class="button-size">
-						<input input type="hidden" type="text" name="bacon_id" value={{this.id}}><br>
-						<button class="buy-it-btn-color" type="submit" class="btn btn-warning">Buy it!</button>
-					</form>
-				</div>
-				{{/unless}}
-			  {{/each}}
-			</div>
-		</div>
-		<div class="col-xs-6 text-center" class="task">
-			  {{#each bacon}}
-			  	{{#if this.sold}}
-			  		<input class="form-control" type="text" placeholder="{{this.id}} . {{this.item_name}}" readonly>
-				{{/if}}
-			  {{/each}}
 		</div>
 	</div>
 </div>
@@ -90,7 +66,7 @@
 				<input type="text" class="form-control" name="item_name" value="" id="enter_text">
 				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
 			</form>
-			<p>Enter a bacon you want to add, then click the "Submit" button.</p>
+			<p>Enter a bacon you want to sell, then click "Submit".</p>
 		</div>
 	</div>
 </div>

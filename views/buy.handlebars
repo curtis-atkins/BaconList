@@ -11,9 +11,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=" navbar-menu"><a href="#">BUY <span class="sr-only">(current)</span></a></li>
-        <li class= "navbar-menu"><a href="#">SELL</a></li>
-         <li class= "navbar-menu"><a href="#">TRADE</a></li>
+        <li class=" navbar-menu"><a href="/buy">BUY <span class="sr-only">(current)</span></a></li>
+        <li class= "navbar-menu"><a href="/sell">SELL</a></li>
+         <li class= "navbar-menu"><a href="/trade">TRADE</a></li>
         <li class="dropdown navbar-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -29,7 +29,7 @@
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control navbar-menu navbar-search" placeholder="WHAT'S SIZZLIN'?">
+          <input type="text" class="form-control navbar-menu navbar-search" placeholder="What to buy?">
         </div>
         <button type="submit" class="btn btn-default navbar-btn">SEARCH</button>
       </form>
@@ -84,13 +84,4 @@
 </div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12 text-center enter_section">
-			<form action="/bacon/create" method="POST">
-				<input type="text" class="form-control" name="item_name" value="" id="enter_text">
-				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
-			</form>
-			<p>Enter a bacon you want to add, then click the "Submit" button.</p>
-		</div>
-	</div>
 </div>

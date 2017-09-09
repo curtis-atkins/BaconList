@@ -14,6 +14,27 @@ router.get("/bacon", function(req, res) {
   });
 });
 
+router.get("/sell", function(req, res) {
+  bacon.all(function(data) {
+    var hbsObject = { bacon: data };
+    res.render("sell", hbsObject);
+  });
+});
+
+router.get("/buy", function(req, res) {
+  bacon.all(function(data) {
+    var hbsObject = { bacon: data };
+    res.render("buy", hbsObject);
+  });
+});
+
+router.get("/trade", function(req, res) {
+  bacon.all(function(data) {
+    var hbsObject = { bacon: data };
+    res.render("trade", hbsObject);
+  });
+});
+
 router.post("/bacon/create", function(req, res) {
   bacon.create(req.body.item_name, function(result) {
     console.log(result);
