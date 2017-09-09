@@ -55,28 +55,11 @@
 		<div class="clearFloat">
 		</div>
 		<div class="col-xs-6 text-center" class="task">
-			<div class="row">
-			  {{#each bacon}}
-			  	{{#unless this.sold}}
-				<div class="col-xs-9 text-center">
-					<pre>{{this.id}}. {{this.item_name}}
-					</pre>
-				  		<!-- {{this.Date}} -->
-				</div>
-				<div class="col-xs-3 text-center">
-					<form method="POST" action="/bacon/update?_method=PUT" class="button-size">
-						<input input type="hidden" type="text" name="bacon_id" value={{this.id}}><br>
-						<button class="buy-it-btn-color" type="submit" class="btn btn-warning">Buy it!</button>
-					</form>
-				</div>
-				{{/unless}}
-			  {{/each}}
-			</div>
 		</div>
 		<div class="col-xs-6 text-center" class="task">
 			  {{#each bacon}}
 			  	{{#if this.sold}}
-			  		<input class="form-control" type="text" placeholder="{{this.id}} . {{this.item_name}}" readonly>
+			  		<input class="form-control" type="text" placeholder="{{this.item_id}} . {{this.item_name}}" readonly>
 				{{/if}}
 			  {{/each}}
 		</div>

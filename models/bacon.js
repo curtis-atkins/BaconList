@@ -10,7 +10,7 @@ var bacon = {
     orm.create("itemList", ["item_name", "sold"], [name, false], cb);
   },
   update: function(id, cb) {
-    var condition = "id=" + id;
+    var condition = "item_id=" + id;
     orm.update("itemList", {
       sold: true
     }, condition, cb);
