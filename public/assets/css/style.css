@@ -182,3 +182,34 @@ input[type=text] {
 .sellPageMessage {
   color: #FFAC75;
 }
+
+.login-text {
+  margin: 0 auto;
+  padding: 40px 0px 50px 300px;
+}
+
+.fb-login-button {
+  margin: 20px 0px 80px 500px;
+
+}
+
+#welcome {
+  font-size: 4em;
+  color: #FFAC75;
+}
+
+#h41 {
+  color: #E58966;
+  text-shadow: black;
+
+}
+
+#h42 {
+  color: #E58966;
+  text-shadow: black;
+}
+
+.baconMan-login-img {
+  height: 250px;
+  width: 250px;
+}
