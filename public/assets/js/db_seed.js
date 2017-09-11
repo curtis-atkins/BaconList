@@ -3,15 +3,15 @@ var request = require("request");
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
-  host: "localhost",
+  host: "p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
   port: 3306,
 
   // Your username
-  user: "root",
+  user: "cecm0l9b35qd2mv0",
 
   // Your password
-  password: "",
-  database: "bacon_db"
+  password: "k3bzmvgljxgpkkx0",
+  database: "lof3wyne7luqrirs"
 });
 
 connection.connect(function(err) {
