@@ -62,11 +62,13 @@ FB.Event.subscribe('auth.login', function () {
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
+
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
+    	
       // Logged into your app and Facebook.
       testAPI();
     } else {
@@ -82,6 +84,8 @@ FB.Event.subscribe('auth.login', function () {
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
+      console.log(response);
+      console.log(response);
     });
   }
 
@@ -127,9 +131,17 @@ FB.Event.subscribe('auth.login', function () {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
+      var USERNAME = response.name;
+      console.log(USERNAME);
+
+      // Clear localStorage
+      localStorage.clear();
+      // Store all content into localStorage
+      localStorage.setItem("name", USERNAME);
       /*document.getElementById('status').innerHTML =
         'USER: ' + response.name;
       */
+
     });
   }
 </script>
