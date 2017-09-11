@@ -71,4 +71,5 @@
       document.getElementById('sign-in-btn').innerHTML =
          "USER: " + response.name;
     });
+    window.location.href = '/';
   }
