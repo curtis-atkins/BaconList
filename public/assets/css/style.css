@@ -213,3 +213,7 @@ input[type=text] {
   height: 250px;
   width: 250px;
 }
+
+.signout-btn {
+  margin-left: 10px;
+}

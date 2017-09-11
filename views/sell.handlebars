@@ -34,12 +34,14 @@
         </div>
         <button type="submit" class="btn btn-default navbar-btn">SEARCH</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-menu"><a href="#">Link</a></li>
-      </ul>
+      
+      <button type="button" class="btn btn-default navbar-btn navbar-right signout-btn" id="signout">
+        SIGN OUT
+      </button>
       <button type="button" class="btn btn-default navbar-btn navbar-right" id="sign-in-btn">
         <i class="fa fa-facebook-square"></i>SIGN IN
       </button>
+      
     </div><!-- /.navbar-collapse -->
   </div>
 </nav>
@@ -97,3 +99,7 @@
     </div>
   </div>
 </div>
+
+<script>
+$("#sign-in-btn").html(localStorage.getItem("name"));
+</script>
