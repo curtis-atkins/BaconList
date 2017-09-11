@@ -26,16 +26,27 @@ request("https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAM
         var items = JSON.parse(body).findItemsByKeywordsResponse[0].searchResult[0].item;
         for (var i = 0; i < items.length; i++) {
             console.log("Inserting a new product...\n");
+            console.log(items[i].galleryURL[0]);
+            var itemImage = "";
+            if (items[i].galleryURL[0] === "http://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
+                itemImage = "../assets/images/baconMan.png";
+            }
+            else {
+                itemImage = items[i].galleryURL[0];
+            }
             var query = connection.query(
             "INSERT INTO itemList SET ?",
             {
                 item_name: items[i].title,
-                item_price: items[i].sellingStatus[0].currentPrice[0].__value__
+                item_price: items[i].sellingStatus[0].currentPrice[0].__value__,
+                item_image: itemImage
             },
             function(err, res) {
                 console.log(res.affectedRows + " product inserted!\n"); 
+                
             }
             );
         }
   }
+  connection.end();
 });
