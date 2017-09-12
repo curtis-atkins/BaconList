@@ -61,11 +61,34 @@
 				  		<!-- {{this.Date}} -->
 				</div>
 				<div class="col-xs-3 text-center">
-					<form method="POST" action="/bacon/update?_method=PUT" class="button-size">
+					<form  class="button-size">
 						<input input type="hidden" type="text" name="bacon_id" value={{this.item_id}}><br>
-						<button class="buy-it-btn-color" type="submit" class="btn btn-warning">Buy it!</button>
+						<button class="buy-it-btn-color" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Buy it!</button>
 					</form>
 				</div>
+        <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Confirm Purchase</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <img src={{this.item_image}} alt="Item image" height="140"> {{this.item_name}}
+                  </div>
+                  <div class="modal-footer">
+                <form method="POST" action="/bacon/update?_method=PUT">
+                    <input input type="hidden" type="text" name="bacon_id" value={{this.item_id}}><br>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Purchase</button>
+                </form>
+                  </div>
+              </div>
+            </div>
+          </div>
 				{{/unless}}
 			  {{/each}}
 			</div>
