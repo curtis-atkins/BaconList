@@ -76,6 +76,7 @@ FB.Event.subscribe('auth.login', function () {
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
     }
+
   }
 
   // This function is called when someone finishes with the Login
@@ -116,6 +117,7 @@ FB.Event.subscribe('auth.login', function () {
 
   };
 
+
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -141,17 +143,9 @@ FB.Event.subscribe('auth.login', function () {
       /*document.getElementById('status').innerHTML =
         'USER: ' + response.name;
       */
-
+      window.location = "/bacon";
     });
-  }
+  } 
+  //window.location.reload(true);
+  
 </script>
-
-<!--
-  Below we include the Login Button social plugin. This button uses
-  the JavaScript SDK to present a graphical Login button that triggers
-  the FB.login() function when clicked.
--->
-
-<div id="status">
-</div>
-
