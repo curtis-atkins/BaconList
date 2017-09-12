@@ -45,7 +45,7 @@ router.get("/trade", function(req, res) {
 
 router.post("/bacon/create", function(req, res) {
   console.log(JSON.stringify(req.body));
-  bacon.create(
+  bacon.create("itemList",
     {
       item_name: req.body.item_name,
       item_price: req.body.item_price,
@@ -58,7 +58,7 @@ router.post("/bacon/create", function(req, res) {
 });
 
 router.put("/bacon/update", function(req, res) {
-  bacon.update(req.body.bacon_id, function(result) {
+  bacon.update("itemList", req.body.bacon_id, function(result) {
     console.log(result);
     res.redirect("/");
   });
