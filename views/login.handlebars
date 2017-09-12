@@ -138,20 +138,9 @@ FB.Event.subscribe('auth.login', function () {
       localStorage.clear();
       // Store all content into localStorage
       localStorage.setItem("name", USERNAME);
-      /*document.getElementById('status').innerHTML =
-        'USER: ' + response.name;
-      */
-	window.location.href = "/bacon";
+      
+      	window.location.reload(false); 
+	window.location = "/bacon";
     });
   }
 </script>
-
-<!--
-  Below we include the Login Button social plugin. This button uses
-  the JavaScript SDK to present a graphical Login button that triggers
-  the FB.login() function when clicked.
--->
-
-<div id="status">
-</div>
-
