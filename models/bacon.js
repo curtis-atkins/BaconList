@@ -6,18 +6,18 @@ var bacon = {
       cb(res);
     });
   },
-  create: function(item_info, cb) {
+  create: function(table, item_info, cb) {
     var col = [];
     var val = [];
     for (let key in item_info) {
       col.push(key);
       val.push(item_info[key]);
     }
-    orm.create("itemList", col, val, cb);
+    orm.create(table, col, val, cb);
   },
-  update: function(id, cb) {
+  update: function(table ,id, cb) {
     var condition = "item_id=" + id;
-    orm.update("itemList", {
+    orm.update(table, {
       sold: true
     }, condition, cb);
   }

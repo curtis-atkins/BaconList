@@ -14,49 +14,6 @@
 		<div class="fb-login-button" id="fb-login-button" data-auto-logout-link="false" data-button-type="continue_with" data-max-rows="1" data-show-faces="false" data-size="large" data-use-continue-as="false"></div>
 		<div id="fb-root"></div>
 	</div>
-	<!--<script>
-	FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
-	   (function(d, s, id) {
-	    var js, fjs = d.getElementsByTagName(s)[0];
-	    if (d.getElementById(id)) return;
-	    js = d.createElement(s); js.id = id;
-	    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=122804275120497";
-	    fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-
-	   function checkLoginState() {
-	   	FB.getLoginStatus(function(response) {
-	    	statusChangeCallback(response);
-	  		});
-		}
-
-		FB.login(function(response) {
-		  if (response.status === 'connected') {
-		    // Logged into your app and Facebook.
-		  } else {
-		    // The person is not logged into this app or we are unable to tell. 
-		  }
-		});
-
-
-		FB.logout(function(response) {
-   // Person is now logged out
-});
-	</script>
-
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-</body>
-</html>
-
-
-FB.Event.subscribe('auth.login', function () {
-          window.location = "http://localhost:3000/bacon";
-      });
--->
-
 <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -140,12 +97,13 @@ FB.Event.subscribe('auth.login', function () {
       localStorage.clear();
       // Store all content into localStorage
       localStorage.setItem("name", USERNAME);
+
       /*document.getElementById('status').innerHTML =
         'USER: ' + response.name;
       */
-      window.location = "/bacon";
+      	window.location.reload(false); 
+	      window.location = "/bacon";
+
     });
-  } 
-  //window.location.reload(true);
-  
+  }   
 </script>
