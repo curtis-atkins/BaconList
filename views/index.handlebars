@@ -61,11 +61,11 @@
                       <p>${{this.item_price}}</p>
                     </div>
                     <div class="modal-footer">
-                  <form method="POST" action="/bacon/update?_method=PUT">
-                      <input input type="hidden" type="text" name="bacon_id" value={{this.item_id}}><br>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                      <button type="submit" class="btn btn-primary">Purchase</button>
-                  </form>
+                      <form method="POST" action="/bacon/update?_method=PUT">
+                          <input input type="hidden" type="text" name="bacon_id" value={{item_id: this.item_id, item_price: this.item_price}}><br>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary">Purchase</button>
+                      </form>
                     </div>
                 </div>
               </div>
