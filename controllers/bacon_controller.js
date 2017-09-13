@@ -68,10 +68,10 @@ router.put("/bacon/update", function(req, res) {
   //Logs Transaction history
   transactionList.create("transactionList",
     {
-      item_id: req.body.bacon_id.item_id,
-      item_price: req.body.bacon_id.item_price,
-      buyer_id: "1",
-      seller_id: "0"
+      item_id: req.body.bacon_id,
+      item_price: 10.00,
+      buyer_id: 1,
+      seller_id: 0
     }, function(result) {
     console.log(result);
     res.redirect("/index");
