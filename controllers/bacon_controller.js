@@ -2,6 +2,8 @@ var express = require("express");
 
 var router = express.Router();
 var bacon = require("../models/bacon");
+var userList = require("../models/userList");
+var transactionList = require("../models/transactionList");
 
 router.get("/login", function(req, res) {
   bacon.all(function(data) {
@@ -11,10 +13,17 @@ router.get("/login", function(req, res) {
 });
 
 router.get("/", function(req, res) {
-  res.redirect("/bacon");
+  res.redirect("/login");
 });
 
 router.get("/bacon", function(req, res) {
+  bacon.all(function(data) {
+    var hbsObject = { bacon: data };
+    res.render("index", hbsObject);
+  });
+});
+
+router.get("/buy", function(req, res) {
   bacon.all(function(data) {
     var hbsObject = { bacon: data };
     res.render("index", hbsObject);
@@ -28,19 +37,14 @@ router.get("/sell", function(req, res) {
   });
 });
 
-router.get("/buy", function(req, res) {
-  bacon.all(function(data) {
-    var hbsObject = { bacon: data };
-    res.render("buy", hbsObject);
-  });
-});
-
+/*
 router.get("/trade", function(req, res) {
   bacon.all(function(data) {
     var hbsObject = { bacon: data };
     res.render("trade", hbsObject);
   });
 });
+*/
 
 router.post("/bacon/create", function(req, res) {
   console.log(JSON.stringify(req.body));
@@ -57,9 +61,59 @@ router.post("/bacon/create", function(req, res) {
 });
 
 router.put("/bacon/update", function(req, res) {
-  bacon.update("itemList", req.body.bacon_id, function(result) {
+  const item_id = req.body.bacon_id;
+  bacon.update("itemList", item_id, function(result) {
     console.log(result);
-    res.redirect("/");
+    //Creates transaction log
+    transactionList.create("transactionList",
+      {
+        item_id: item_id,
+        item_price: 10.00,
+        buyer_id: 0,
+        seller_id: 0
+      }, function(result) {
+        console.log(result);
+        res.redirect("/bacon");
+    });
+  });
+});
+
+//Creates User
+//Needs to upate .get to .post
+router.get("/createUser", function(req, res) {
+  console.log(JSON.stringify(req.body));
+  userList.create("userList",
+    {
+      user_firstName: "Dummy",
+      user_lastName: "01",
+      user_userName: "dummy01@somewhere.com"
+    }, function(result) {
+    console.log(result);
+    res.redirect("/bacon");
+  });
+});
+
+/*
+//Logs Transaction history
+router.put("/createTransaction", function(req, res) {
+  transactionList.create("transactionList",
+    {
+      item_id: req.body.bacon_id,
+      item_price: 10.00,
+      buyer_id: 1,
+      seller_id: 0
+    }, function(result) {
+      console.log(result);
+      res.redirect("/index");
+  });
+});
+*/
+
+//Updates User
+router.put("/updateUser", function(req, res) {
+  bacon.update("userList", "jeremyhe1@gmail.com", 1234, function(result) {
+    console.log(result);
+    res.redirect("/bacon");
   });
 });
 

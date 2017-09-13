@@ -19,11 +19,10 @@ CREATE TABLE itemList (
 
 CREATE TABLE userList (
 	user_id INT NOT NULL AUTO_INCREMENT,
-	user_firstname VARCHAR(255) NOT NULL,
+	user_firstName VARCHAR(255) NOT NULL,
 	user_lastName VARCHAR(255) NOT NULL,
 	user_userName VARCHAR(255) NOT NULL,
-	user_password VARCHAR(255) NOT NULL,
-	user_balance DECIMAL(12,2) DEFAULT 5.00,
+	user_balance DECIMAL(12,2) DEFAULT 1000.00,
 	user_photo VARCHAR(255) DEFAULT NULL,
 	PRIMARY KEY (user_id)
 );
@@ -32,6 +31,6 @@ CREATE TABLE transactionList (
 	item_id INT NOT NULL,
 	item_price DECIMAL(12,2) NOT NULL,
 	buyer_id INT NOT NULL,
-	seller_id INT NOT NULL,
+	seller_id INT DEFAULT NULL,
 	dateSold TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
