@@ -68,7 +68,8 @@ router.put("/bacon/update", function(req, res) {
 });
 
 //Creates User
-router.post("/bacon/createUser", function(req, res) {
+//Needs to upate .get to .post
+router.get("/bacon/createUser", function(req, res) {
   console.log(JSON.stringify(req.body));
   userList.create("userList",
     {
