@@ -73,8 +73,8 @@ router.put("/bacon/update", function(req, res) {
       buyer_id: 1,
       seller_id: 0
     }, function(result) {
-    console.log(result);
-    res.redirect("/index");
+      console.log(result);
+      res.redirect("/index");
   });
 });
 
