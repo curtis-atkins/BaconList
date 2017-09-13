@@ -13,7 +13,7 @@ router.get("/login", function(req, res) {
 });
 
 router.get("/", function(req, res) {
-  res.redirect("/bacon");
+  res.redirect("/login");
 });
 
 router.get("/bacon", function(req, res) {
@@ -63,7 +63,7 @@ router.post("/bacon/create", function(req, res) {
 router.put("/bacon/update", function(req, res) {
   bacon.update("itemList", req.body.bacon_id, function(result) {
     console.log(result);
-    res.redirect("/");
+    res.redirect("/index");
   });
 });
 
@@ -78,7 +78,7 @@ router.get("/bacon/createUser", function(req, res) {
       user_userName: "jeremyhe1@gmail.com"
     }, function(result) {
     console.log(result);
-    res.redirect("/");
+    res.redirect("/index");
   });
 });
 
@@ -86,7 +86,7 @@ router.get("/bacon/createUser", function(req, res) {
 router.put("/bacon/updateUser", function(req, res) {
   bacon.update("userList", "jeremyhe1@gmail.com", 1234, function(result) {
     console.log(result);
-    res.redirect("/");
+    res.redirect("/index");
   });
 });
 
