@@ -15,8 +15,8 @@ var userList = {
     }
     orm.create(table, col, val, cb);
   },
-  update: function(table ,id, newBalance, cb) {
-    var condition = "user_id=" + id;
+  update: function(table ,userName, newBalance, cb) {
+    var condition = "user_userName=" + userName;
     orm.update(table, {
       user_balance: newBalance
     }, condition, cb);
