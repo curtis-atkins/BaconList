@@ -1,7 +1,4 @@
 body {
-  /*width: 99%;
-  height: 900px;
-  */
   background-color: #B34348;
 }
 
@@ -57,10 +54,6 @@ body {
 
 #text-enter-button:hover {
       border: 1px solid #CC6657;
-
-}
-
-
 }
 
 .task {
@@ -176,7 +169,6 @@ input[type=text] {
 
 .navbar-btn:hover {
   border: 1px solid #CC6657;
-
 }
 
 .sellPageMessage {
@@ -190,7 +182,6 @@ input[type=text] {
 
 .fb-login-button {
   margin: 20px 0px 80px 500px;
-
 }
 
 #welcome {
@@ -201,7 +192,6 @@ input[type=text] {
 #h41 {
   color: #E58966;
   text-shadow: black;
-
 }
 
 #h42 {

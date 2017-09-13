@@ -42,8 +42,7 @@ request("https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAM
                 item_image: itemImage
             },
             function(err, res) {
-                console.log(res.affectedRows + " product inserted!\n"); 
-                
+                console.log(res.affectedRows + "product inserted!\n"); 
             }
             );
         }

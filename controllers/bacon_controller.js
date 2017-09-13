@@ -10,7 +10,6 @@ router.get("/login", function(req, res) {
   });
 });
 
-
 router.get("/", function(req, res) {
   res.redirect("/bacon");
 });

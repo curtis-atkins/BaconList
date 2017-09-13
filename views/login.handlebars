@@ -14,10 +14,8 @@
 		<div class="fb-login-button" id="fb-login-button" data-auto-logout-link="false" data-button-type="continue_with" data-max-rows="1" data-show-faces="false" data-size="large" data-use-continue-as="false"></div>
 		<div id="fb-root"></div>
 	</div>
-
-	
-
 <script>
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -36,7 +34,6 @@
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
     }
-
   }
 
   // This function is called when someone finishes with the Login
@@ -74,7 +71,6 @@
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
-
   };
 
 
@@ -106,7 +102,6 @@
       */
       	window.location.reload(false); 
 	      window.location = "/bacon";
-
     });
   }   
 </script>
