@@ -61,21 +61,11 @@ router.post("/bacon/create", function(req, res) {
 });
 
 router.put("/bacon/update", function(req, res) {
-  bacon.update("itemList", req.body.bacon_id.item_id, function(result) {
+  bacon.update("itemList", req.body.bacon_id, function(result) {
     console.log(result);
-    //res.redirect("/index");
+    res.redirect("/bacon/createTransaction");
   });
-  //Logs Transaction history
-  transactionList.create("transactionList",
-    {
-      item_id: req.body.bacon_id,
-      item_price: 10.00,
-      buyer_id: 1,
-      seller_id: 0
-    }, function(result) {
-      console.log(result);
-      res.redirect("/index");
-  });
+
 });
 
 //Creates User
@@ -90,6 +80,20 @@ router.get("/bacon/createUser", function(req, res) {
     }, function(result) {
     console.log(result);
     res.redirect("/index");
+  });
+});
+
+//Logs Transaction history
+router.get("/bacon/createTransaction", function(req, res) {
+  transactionList.create("transactionList",
+    {
+      item_id: req.body.bacon_id,
+      item_price: 10.00,
+      buyer_id: 1,
+      seller_id: 0
+    }, function(result) {
+      console.log(result);
+      res.redirect("/index");
   });
 });
 
