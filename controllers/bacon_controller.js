@@ -80,13 +80,13 @@ router.put("/bacon/update", function(req, res) {
 
 //Creates User
 //Needs to upate .get to .post
-router.get("/bacon/createUser", function(req, res) {
+router.get("/createUser", function(req, res) {
   console.log(JSON.stringify(req.body));
   userList.create("userList",
     {
-      user_firstName: "Jeremy",
-      user_lastName: "He",
-      user_userName: "jeremyhe1@gmail.com"
+      user_firstName: "Dummy",
+      user_lastName: "01",
+      user_userName: "dummy01@somewhere.com"
     }, function(result) {
     console.log(result);
     res.redirect("/bacon");
