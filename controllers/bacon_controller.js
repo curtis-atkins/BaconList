@@ -73,7 +73,7 @@ router.put("/bacon/update", function(req, res) {
         seller_id: 0
       }, function(result) {
         console.log(result);
-        res.redirect("/index");
+        res.redirect("/bacon");
     });
   });
 });
@@ -89,7 +89,7 @@ router.get("/bacon/createUser", function(req, res) {
       user_userName: "jeremyhe1@gmail.com"
     }, function(result) {
     console.log(result);
-    res.redirect("/index");
+    res.redirect("/bacon");
   });
 });
 
@@ -113,7 +113,7 @@ router.put("/createTransaction", function(req, res) {
 router.put("/updateUser", function(req, res) {
   bacon.update("userList", "jeremyhe1@gmail.com", 1234, function(result) {
     console.log(result);
-    res.redirect("/index");
+    res.redirect("/bacon");
   });
 });
 
