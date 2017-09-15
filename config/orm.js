@@ -21,6 +21,23 @@ function objToSql(ob) {
   }
   return arr.toString();
 }
+
+function getCols(inputObj) {
+  var cols = [];
+  for (key in inputObj) {
+    cols.push(key);
+  }
+  return cols;
+}
+
+function getVals(inputObj) {
+  var vals = [];
+  for (key in inputObj) {
+    vals.push(inputObj[key]);
+  }
+  return vals;
+}
+
 var orm = {
   all: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
@@ -58,6 +75,34 @@ var orm = {
     console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) throw err;
+      cb(result);
+    });
+  },
+
+  upsert: function(table, objColVals, condition, cb) {
+    var cols = getCols(objColVals);
+    var vals = getVals(objColVals);
+    var queryString = "INSERT INTO " + table;
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += vals.toString();
+    queryString += ") ";
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        var queryString = "UPDATE " + table;
+        queryString += " SET ";
+        queryString += "user_balance = user_balance + " + objColVals['user_balance'];
+        queryString += " WHERE ";
+        queryString += condition;
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+          if (err) throw err;
+          //cb(result);
+        });
+      }
       cb(result);
     });
   }

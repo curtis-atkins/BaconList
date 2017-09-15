@@ -18,11 +18,10 @@ CREATE TABLE itemList (
 );
 
 CREATE TABLE userList (
-	user_id INT NOT NULL AUTO_INCREMENT,
-	user_firstName VARCHAR(255) NOT NULL,
-	user_lastName VARCHAR(255) NOT NULL,
-	user_userName VARCHAR(255) NOT NULL,
-	user_balance DECIMAL(12,2) DEFAULT 1000.00,
+	user_id INT UNIQUE NOT NULL,
+	user_fullName VARCHAR(255) DEFAULT NULL,
+	user_email VARCHAR(255) DEFAULT NULL,
+	user_balance DECIMAL(12,2) DEFAULT 0.00,
 	user_photo VARCHAR(255) DEFAULT NULL,
 	PRIMARY KEY (user_id)
 );

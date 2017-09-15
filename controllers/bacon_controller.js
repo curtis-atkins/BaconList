@@ -13,7 +13,7 @@ router.get("/login", function(req, res) {
 });
 
 router.get("/", function(req, res) {
-  res.redirect("/bacon");
+  res.redirect("/login");
 });
 
 router.get("/bacon", function(req, res) {
@@ -78,40 +78,14 @@ router.put("/bacon/update", function(req, res) {
   });
 });
 
-//Creates User
-//Needs to upate .get to .post
-router.get("/createUser", function(req, res) {
-  console.log(JSON.stringify(req.body));
-  userList.create("userList",
+//Updates User tester
+router.get("/upsertUser", function(req, res) {
+  console.log('Something went wrong here.rs')
+  userList.upsert('userList',
     {
-      user_firstName: "Dummy",
-      user_lastName: "01",
-      user_userName: "dummy01@somewhere.com"
+      user_id: 12345,
+      user_balance: 25
     }, function(result) {
-    console.log(result);
-    res.redirect("/bacon");
-  });
-});
-
-/*
-//Logs Transaction history
-router.put("/createTransaction", function(req, res) {
-  transactionList.create("transactionList",
-    {
-      item_id: req.body.bacon_id,
-      item_price: 10.00,
-      buyer_id: 1,
-      seller_id: 0
-    }, function(result) {
-      console.log(result);
-      res.redirect("/index");
-  });
-});
-*/
-
-//Updates User
-router.put("/updateUser", function(req, res) {
-  bacon.update("userList", "jeremyhe1@gmail.com", 1234, function(result) {
     console.log(result);
     res.redirect("/bacon");
   });
