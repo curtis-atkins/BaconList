@@ -62,8 +62,9 @@
         </div>
         <div class="modal-footer">
           <form id="purchaseForm" method="POST" action="/bacon/update?_method=PUT">
-              <input input id="itemID" type="hidden" type="text" name="bacon_id"><br>
-              
+              <input id="itemID" type="hidden" type="text" name="bacon_id"><br>
+              <input id="itemPriceForm" type="hidden" type="text" name="bacon_price"><br>
+              <input id="userID" type="hidden" type="text" name="bacon_user"><br>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button id="purchaseBtn" type="submit" class="btn btn-primary">Purchase</button>
           </form>
@@ -74,12 +75,15 @@
 
 <script>
 
+var ID = "";
+var price = "";
+
 $("#sign-in-btn").html(localStorage.getItem("name"));
 
 $(".buy-it-btn-color").on("click", function() {
   var image = $(this).closest('.col-xs-3').find('#itemImage').html();
   var name = $(this).closest('.col-xs-3').find('#itemName').html();
-  var price = $(this).closest('.col-xs-3').find('#itemPrice').html();
+  price = $(this).closest('.col-xs-3').find('#itemPrice').html();
   var id = $(this).closest('.col-xs-3').attr('id');
   $('#myModal .modal-body').html('<div class="modalBody" id=' + id + '<p>' + image + '</p><p>' + name + '</p><p>' + price + '</p>');
   $('#myModal').modal('show');
@@ -87,6 +91,8 @@ $(".buy-it-btn-color").on("click", function() {
 
 $("#myModal").on("shown.bs.modal", function() {
   $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+  $(this).find('#itemPriceForm').val(price);
+  $(this).find('#userID').val(ID);
   console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
 });
 
@@ -99,7 +105,7 @@ $("#purchaseBtn").on("click", function() {
     console.log('statusChangeCallback');
     console.log(response);
     console.log(response.authResponse.userID);
-    var ID = response.authResponse.userID;
+    ID = response.authResponse.userID;
 
           localStorage.setItem("userID", ID);
 
