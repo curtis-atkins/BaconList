@@ -34,13 +34,13 @@
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
-    	
       // Logged into your app and Facebook.
+      
       testAPI();
+      //window.location.reload(false); 
+        window.location = "/bacon";
     } else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
     }
   }
 
@@ -50,7 +50,6 @@
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
-      console.log(response);
       console.log(response);
     });
   }
@@ -103,11 +102,11 @@
 
       // Store all content into localStorage
       localStorage.setItem("name", USERNAME);
-      /*document.getElementById('status').innerHTML =
-        'USER: ' + response.name;
-      */
-      	//window.location.reload(false); 
+      
+        	//window.location.reload(false); 
 	      //window.location = "/bacon";
+
+        //$("#sign-in-btn").html(localStorage.getItem("name"));
     });
-  }   
-</script>
+  }
+  </script>
