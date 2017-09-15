@@ -5,7 +5,7 @@
         <img alt="baconMan"class="baconMan img-rounded" src="/assets/images/baconMan.png">
       </a>
       <a href="/bacon"> 
-      	<h1 class= "brand-text">Bacon's List</h1>
+        <h1 class= "brand-text">Bacon's List</h1>
       </a>
     </div>
 
@@ -18,7 +18,7 @@
         SIGN OUT
       </button>
       <button type="button" class="btn btn-default navbar-btn navbar-right" id="sign-in-btn">
-      	<i class="fa fa-facebook-square"></i>SIGN IN
+        <i class="fa fa-facebook-square"></i>SIGN IN
       </button>
       
     </div><!-- /.navbar-collapse -->
@@ -26,13 +26,13 @@
 </nav>
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="clearFloat">
-		</div>
-		<div class="col-xs-6 col-md-4 text-center" class="task">
-			<div class="row">
-			  {{#each bacon}}
-			  	{{#unless this.sold}}
+  <div class="row">
+    <div class="clearFloat">
+    </div>
+    <div class="col-xs-6 col-md-4 text-center" class="task">
+      <div class="row">
+        {{#each bacon}}
+          {{#unless this.sold}}
             <div class="col-xs-12 text-center">
               <div><img src={{this.item_image}} alt="Item image" height="140"></div><br>
               <div>{{this.item_name}} <br> ${{this.item_price}}</div>
@@ -71,17 +71,17 @@
               </div>
             </div>
           {{/unless}}
-			  {{/each}}
-			</div>
-		</div>
-		<div class="col-xs-6 text-center" class="task">
-			  
-		</div>
-	</div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-6 text-center" class="task">
+        
+    </div>
+  </div>
 </div>
 
 <div class="container">
-	
+  
 </div>
 
 <script>
