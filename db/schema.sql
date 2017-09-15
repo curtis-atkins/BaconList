@@ -12,13 +12,13 @@ CREATE TABLE itemList (
 	item_price DECIMAL(12,2) DEFAULT 0.00,
 	item_description VARCHAR(300) DEFAULT NULL,
 	item_image VARCHAR(255) DEFAULT NULL,
-	seller_id INT DEFAULT NULL,
+	seller_id VARCHAR(255) DEFAULT NULL,
 	sold BOOL DEFAULT false,
 	PRIMARY KEY (item_id)
 );
 
 CREATE TABLE userList (
-	user_id INT UNIQUE NOT NULL,
+	user_id VARCHAR(255) UNIQUE NOT NULL,
 	user_fullName VARCHAR(255) DEFAULT NULL,
 	user_email VARCHAR(255) DEFAULT NULL,
 	user_balance DECIMAL(12,2) DEFAULT 0.00,
@@ -29,7 +29,7 @@ CREATE TABLE userList (
 CREATE TABLE transactionList (
 	item_id INT NOT NULL,
 	item_price DECIMAL(12,2) NOT NULL,
-	buyer_id INT NOT NULL,
-	seller_id INT DEFAULT NULL,
+	buyer_id VARCHAR(255) NOT NULL,
+	seller_id VARCHAR(255) DEFAULT 'BaconList',
 	dateSold TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

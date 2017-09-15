@@ -91,7 +91,7 @@ $(".buy-it-btn-color").on("click", function() {
 
 $("#myModal").on("shown.bs.modal", function() {
   $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
-  $(this).find('#itemPriceForm').val(price);
+  $(this).find('#itemPriceForm').val(price.replace("$", ""));
   $(this).find('#userID').val(ID);
   console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
 });

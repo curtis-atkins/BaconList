@@ -37,15 +37,6 @@ router.get("/sell", function(req, res) {
   });
 });
 
-/*
-router.get("/trade", function(req, res) {
-  bacon.all(function(data) {
-    var hbsObject = { bacon: data };
-    res.render("trade", hbsObject);
-  });
-});
-*/
-
 router.post("/bacon/create", function(req, res) {
   console.log(JSON.stringify(req.body));
   bacon.create("itemList",
@@ -62,32 +53,29 @@ router.post("/bacon/create", function(req, res) {
 
 router.put("/bacon/update", function(req, res) {
   const item_id = req.body.bacon_id;
+  const item_price = req.body.bacon_price;
+  const buyer_id = req.body.bacon_user;
+  const seller_id = 'BaconList';
   bacon.update("itemList", item_id, function(result) {
     console.log(result);
     //Creates transaction log
     transactionList.create("transactionList",
+    {
+      item_id: item_id,
+      item_price: item_price,
+      buyer_id: buyer_id,
+      seller_id: seller_id
+    }, function(result) {
+      console.log(result);
+      userList.upsert('userList',
       {
-        item_id: item_id,
-        item_price: 10.00,
-        buyer_id: 0,
-        seller_id: 0
+        user_id: buyer_id,
+        user_balance: item_price
       }, function(result) {
         console.log(result);
         res.redirect("/bacon");
+      });
     });
-  });
-});
-
-//Updates User tester
-router.get("/upsertUser", function(req, res) {
-  console.log('Something went wrong here.rs')
-  userList.upsert('userList',
-    {
-      user_id: 12345,
-      user_balance: 25
-    }, function(result) {
-    console.log(result);
-    res.redirect("/bacon");
   });
 });
 

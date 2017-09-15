@@ -100,10 +100,9 @@ var orm = {
         console.log(queryString);
         connection.query(queryString, function(err, result) {
           if (err) throw err;
-          //cb(result);
+          cb(result);
         });
       }
-      cb(result);
     });
   }
 };
