@@ -207,3 +207,8 @@ input[type=text] {
 .signout-btn {
   margin-left: 10px;
 }
+
+#itemContainer {
+  background-color: white;
+  margin: 10px 10px;
+}

@@ -29,16 +29,17 @@
 	<div class="row">
 		<div class="clearFloat">
 		</div>
-		<div class="col-xs-6 col-md-4 text-center" class="task">
+		{{!-- <div class="col-xs-6 col-md-4 text-center" class="task"> --}}
+    <div class="col-xs-12 text-center" class="task">
 			<div class="row">
 			  {{#each bacon}}
 			  	{{#unless this.sold}}
-            <div class="col-xs-12 text-center">
+            <div id="itemContainer" class="col-xs-3 text-center">
               <div><img src={{this.item_image}} alt="Item image" height="140"></div><br>
               <div>{{this.item_name}} <br> ${{this.item_price}}</div>
               <form  class="button-size">
-                <input input type="hidden" type="text" name="bacon_id" value={{this.item_id}}><br>
-                <button class="buy-it-btn-color" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Buy it!</button>
+                {{!-- <input input type="hidden" type="text" name="bacon_id" value={{this.item_id}}><br> --}}
+                <button id={{this.item_id}} class="buy-it-btn-color" type="button" class="btn btn-warning" >Buy it!</button>
               </form>
               
                   <!-- {{this.Date}} -->
@@ -86,4 +87,10 @@
 
 <script>
 $("#sign-in-btn").html(localStorage.getItem("name"));
+
+$("#itemContainer .buy-it-btn-color").on("click", function() {
+  $('#myModal .modal-body').html($(this).closest("div").html());
+  $('#myModal').modal('show');
+});
+
 </script>
