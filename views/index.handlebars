@@ -29,68 +29,69 @@
 	<div class="row">
 		<div class="clearFloat">
 		</div>
-		{{!-- <div class="col-xs-6 col-md-4 text-center" class="task"> --}}
     <div class="col-xs-12 text-center" class="task">
 			<div class="row">
 			  {{#each bacon}}
 			  	{{#unless this.sold}}
-            <div id="itemContainer" class="col-xs-3 text-center">
-              <div><img src={{this.item_image}} alt="Item image" height="140"></div><br>
-              <div>{{this.item_name}} <br> ${{this.item_price}}</div>
+            <div id={{this.item_id}} class="col-xs-3 text-center itemContainer" >
+              <div id="itemImage"><img src={{this.item_image}} alt="Item image" height="140"></div><br>
+              <div id="itemName">{{this.item_name}}</div>
+              <div id="itemPrice">${{this.item_price}}</div>
               <form  class="button-size">
-                {{!-- <input input type="hidden" type="text" name="bacon_id" value={{this.item_id}}><br> --}}
                 <button id={{this.item_id}} class="buy-it-btn-color" type="button" class="btn btn-warning" >Buy it!</button>
               </form>
-              
                   <!-- {{this.Date}} -->
-            </div>
-            {{!-- <div class="col-xs-3 text-center">
-            </div> --}}
-          <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                      <h3 class="modal-title" id="exampleModalLabel">Confirm Purchase</h3>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <img src={{this.item_image}} alt="Item image" height="140"> 
-                      <p>{{this.item_name}}</p>
-                      <p>${{this.item_price}}</p>
-                    </div>
-                    <div class="modal-footer">
-                      <form method="POST" action="/bacon/update?_method=PUT">
-                          <input input type="hidden" type="text" name="bacon_id" value={{this.item_id}}><br>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                          <button type="submit" class="btn btn-primary">Purchase</button>
-                      </form>
-                    </div>
-                </div>
-              </div>
             </div>
           {{/unless}}
         {{/each}}
       </div>
     </div>
-    <div class="col-xs-6 text-center" class="task">
-        
-    </div>
   </div>
 </div>
 
-<div class="container">
-  
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Confirm Purchase</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <form id="purchaseForm" method="POST" action="/bacon/update?_method=PUT">
+              <input input id="itemID" type="hidden" type="text" name="bacon_id"><br>
+              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button id="purchaseBtn" type="submit" class="btn btn-primary">Purchase</button>
+          </form>
+        </div>
+    </div>
+  </div>
 </div>
 
 <script>
 $("#sign-in-btn").html(localStorage.getItem("name"));
 
-$("#itemContainer .buy-it-btn-color").on("click", function() {
-  $('#myModal .modal-body').html($(this).closest("div").html());
+$(".buy-it-btn-color").on("click", function() {
+  var image = $(this).closest('.col-xs-3').find('#itemImage').html();
+  var name = $(this).closest('.col-xs-3').find('#itemName').html();
+  var price = $(this).closest('.col-xs-3').find('#itemPrice').html();
+  var id = $(this).closest('.col-xs-3').attr('id');
+  $('#myModal .modal-body').html('<div class="modalBody" id=' + id + '<p>' + image + '</p><p>' + name + '</p><p>' + price + '</p>');
   $('#myModal').modal('show');
+});
+
+$("#myModal").on("shown.bs.modal", function() {
+  $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+  console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+});
+
+$("#purchaseBtn").on("click", function() {
+  $("#purchaseForm").submit();
 });
 
 </script>

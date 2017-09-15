@@ -208,7 +208,7 @@ input[type=text] {
   margin-left: 10px;
 }
 
-#itemContainer {
+.itemContainer {
   background-color: white;
   margin: 10px 10px;
 }
