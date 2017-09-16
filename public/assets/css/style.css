@@ -49,11 +49,11 @@ body {
 }
 
 #text-enter-button {
-      border: 1px solid #9A213A;
+  border: 1px solid #9A213A;
 }
 
 #text-enter-button:hover {
-      border: 1px solid #CC6657;
+  border: 1px solid #CC6657;
 }
 
 .task {
@@ -123,12 +123,6 @@ h1 {
   color: #9A213A;
 }
 
-.fa-facebook-square {
-  color: #CC6657;
-  padding: 1px;
-  margin: 1px;
-}
-
 .navbar .nav > li > a {
   font-family: Roboto;
   font-weight: bold;
@@ -159,7 +153,7 @@ input[type=text] {
 }
 
 .sell-search {
-    color: #9A213A; 
+ color: #9A213A; 
 }
 
 .navbar-btn {
