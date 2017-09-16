@@ -1,31 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/bacon">
-					<img alt="baconMan" class="baconMan img-rounded" src="/assets/images/baconMan.png">
-				</a> 
-				<a href="/bacon">
-				<h1 class="brand-text">Bacon's List</h1>
-				</a>
-			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class=" navbar-menu">
-						<a href="/buy">BUY<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="navbar-menu">
-						<a href="/sell">SELL</a>
-					</li>
-				</ul>
-				<button class="btn btn-default navbar-btn navbar-right signout-btn" id="signout" type="button">SIGN OUT</button> 
-				<button class="btn btn-default navbar-btn navbar-right" id="sign-in-btn" type="button"></button>
-			</div><!-- /.navbar-collapse -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/bacon">
+        <img alt="baconMan"class="baconMan img-rounded" src="/assets/images/baconMan.png">
+      </a>
+      <a href="/bacon"> 
+        <h1 class= "brand-text">Bacon's List</h1>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class=" navbar-menu"><a href="/buy">BUY <span class="sr-only">(current)</span></a></li>
+        <li class= "navbar-menu"><a href="/sell">SELL</a></li>
+      </ul>
+      <button type="button" class="btn btn-default navbar-btn navbar-right signout-btn" id="signout">
+        SIGN OUT
+      </button>
+      <button type="button" class="btn btn-default navbar-btn navbar-right" id="sign-in-btn">
+      </button>
+      
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="clearFloat">
 		</div>
     <div class="col-xs-12 text-center" class="task">
 			<div class="row">
@@ -123,7 +124,11 @@ $("#purchaseBtn").on("click", function() {
       
       // Logged into your app and Facebook.
       testAPI();
-    } 
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
   }
 
   // This function is called when someone finishes with the Login
@@ -190,6 +195,7 @@ $("#purchaseBtn").on("click", function() {
 
       $("#signout").click(function(){
     FB.logout();
+    //window.location.reload(true); 
         window.location = "/login";
   });
         
