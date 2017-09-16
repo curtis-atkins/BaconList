@@ -27,186 +27,173 @@
 				<button class="btn btn-default navbar-btn navbar-right" id="sign-in-btn" type="button"></button>
 			</div><!-- /.navbar-collapse -->
 		</div>
-	</nav>
-	
-	<div class="container-fluid">
-		<div class="row">
-			<div class="clearFloat"></div>
-			<div class="task">
-				<div class="row">
-					{{#each bacon}} 
-						{{#unless this.sold}}
-						<div class="col-xs-3 text-center itemContainer" id="{{this.item_id}}">
-							<div id="itemSeller" style="display: none;">
-								{{this.seller_id}}
-							</div>
-							<div id="itemImage">
-								<img alt="Item image" height="140" src="{{this.item_image}}">
-							</div>
-							<br>
-							<div id="itemName">
-								{{this.item_name}}
-							</div>
-							<div id="itemPrice">
-								${{this.item_price}}
-							</div>
-							<form class="button-size">
-								<button class="btn btn-warning" id="{{this.item_id}}" type="button">Buy it!</button>
-							</form><!-- {{this.Date}} -->
-						</div>
-						{{/unless}} 
-					{{/each}}
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Modal -->
-	<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h3 class="modal-title" id="exampleModalLabel">Confirm Purchase</h3>
-					<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-				</div>
-				<div class="modal-body"></div>
-				<div class="modal-footer">
-					<form action="/bacon/update?_method=PUT" id="purchaseForm" method="post" name="purchaseForm">
-						<input id="itemID" name="bacon_id" type="text">
-						<br>
-						<input id="itemPriceForm" name="bacon_price" type="text">
-						<br>
-						<input id="userID" name="bacon_user" type="text">
-						<br>
-						<input id="sellerIDForm" name="bacon_seller" type="text">
-						<br>
-						<button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
-						<button class="btn btn-primary" id="purchaseBtn" type="submit">Purchase</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script>
+    <div class="col-xs-12 text-center" class="task">
+			<div class="row">
+			  {{#each bacon}}
+			  	{{#unless this.sold}}
+            <div id={{this.item_id}} class="col-xs-3 text-center itemContainer" >
+              <div id="itemSeller" style="display: none;">{{this.seller_id}}</div>
+              <div id="itemImage"><img src={{this.item_image}} alt="Item image" max-height="140" max-width="140"></div><br>
+              <div id="itemName">{{this.item_name}}</div>
+              <div id="itemPrice">${{this.item_price}}</div><br>
+              <form  class="button-size">
+                <button id={{this.item_id}} class="buy-it-btn-color" type="button" class="btn btn-warning" >Buy it!</button>
+              </form>
+                  <!-- {{this.Date}} -->
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
 
-	var ID = "";
-	var price = "";
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Confirm Purchase</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <form id="purchaseForm" method="POST" action="/bacon/update?_method=PUT">
+              <input id="itemID" type="hidden" type="text" name="bacon_id">
+              <input id="itemPriceForm" type="hidden" type="text" name="bacon_price">
+              <input id="userID" type="hidden" type="text" name="bacon_user">
+              <input id="sellerIDForm" type="hidden" type="text" name="bacon_seller">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button id="purchaseBtn" type="submit" class="btn btn-primary">Purchase</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
 
-	$("#sign-in-btn").html(localStorage.getItem("name"));
+<script>
 
-	$(".buy-it-btn-color").on("click", function() {
-	 var image = $(this).closest('.col-xs-3').find('#itemImage').html();
-	 var name = $(this).closest('.col-xs-3').find('#itemName').html();
-	 price = $(this).closest('.col-xs-3').find('#itemPrice').html();
-	 var id = $(this).closest('.col-xs-3').attr('id');
-	 var sellerID = $(this).closest('.col-xs-3').find('#itemSeller').html();
-	 console.log("sellerID Button: " + sellerID);
-	 $('#myModal .modal-body').html('<div class="sellerIDModal" id="' + sellerID + '" style="display: none;"><\/div><div class="modalBody" id=' + id + '<p>' + image + '<\/p><p>' + name + '<\/p><p>' + price + '<\/p>');
-	 $('#myModal').modal('show');
-	});
+var ID = "";
+var price = "";
 
-	$("#myModal").on("shown.bs.modal", function() {
-	 $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
-	 $(this).find('#itemPriceForm').val(price.replace("$", ""));
-	 $(this).find('#userID').val(ID);
-	 $(this).find('#sellerIDForm').val($(this).find('.modal-body > .sellerIDModal').attr('id'));
-	 console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
-	 console.log("sellerID: " + $(this).find('.modal-body > .sellerIDModal').attr('id'));
-	});
+$("#sign-in-btn").html(localStorage.getItem("name"));
 
-	$("#purchaseBtn").on("click", function() {
-	 $("#purchaseForm").submit();
-	});
+$(".buy-it-btn-color").on("click", function() {
+  var image = $(this).closest('.col-xs-3').find('#itemImage').html();
+  var name = $(this).closest('.col-xs-3').find('#itemName').html();
+  price = $(this).closest('.col-xs-3').find('#itemPrice').html();
+  var id = $(this).closest('.col-xs-3').attr('id');
+  var sellerID = $(this).closest('.col-xs-3').find('#itemSeller').html();
+  console.log("sellerID Button: " + sellerID);
+  $('#myModal .modal-body').html('<div class="sellerIDModal" id="' + sellerID + '" style="display: none;"></div><div class="modalBody" id=' + id + '</div><div>' + image + '</div><br><div style="height: 10px;">' + name + '</div><br><div>' + price + '</div>');
+  $('#myModal').modal('show');
+});
 
-	   // This is called with the results from from FB.getLoginStatus().
-	 function statusChangeCallback(response) {
-	   console.log('statusChangeCallback');
-	   console.log(response);
-	   console.log(response.authResponse.userID);
-	   ID = response.authResponse.userID;
+$("#myModal").on("shown.bs.modal", function() {
+  $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+  $(this).find('#itemPriceForm').val(price.replace("$", ""));
+  $(this).find('#userID').val(ID);
+  $(this).find('#sellerIDForm').val($(this).find('.modal-body > .sellerIDModal').attr('id'));
+  console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+  console.log("sellerID: " + $(this).find('.modal-body > .sellerIDModal').attr('id'));
+});
 
-	         localStorage.setItem("userID", ID);
+$("#purchaseBtn").on("click", function() {
+  $("#purchaseForm").submit();
+});
+
+    // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    console.log(response.authResponse.userID);
+    ID = response.authResponse.userID;
+
+          localStorage.setItem("userID", ID);
 
 
-	   // The response object is returned with a status field that lets the
-	   // app know the current login status of the person.
-	   // Full docs on the response object can be found in the documentation
-	   // for FB.getLoginStatus().
-	   if (response.status === 'connected') {
-	     
-	     // Logged into your app and Facebook.
-	     testAPI();
-	   } else {
-	   }
-	 }
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      
+      // Logged into your app and Facebook.
+      testAPI();
+    } 
+  }
 
-	 // This function is called when someone finishes with the Login
-	 // Button.  See the onlogin handler attached to it in the sample
-	 // code below.
-	 function checkLoginState() {
-	   FB.getLoginStatus(function(response) {
-	     statusChangeCallback(response);
-	     console.log(response);
-	     console.log(response);
-	   });
-	 }
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+      console.log(response);
+      console.log(response);
+    });
+  }
 
-	 window.fbAsyncInit = function() {
-	   FB.init({
-	     appId      : '122804275120497',
-	     cookie     : true,  // enable cookies to allow the server to access 
-	                         // the session
-	     xfbml      : true,  // parse social plugins on this page
-	     version    : 'v2.8' // use graph api version 2.8
-	   });
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '122804275120497',
+      cookie     : true,  // enable cookies to allow the server to access 
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.8' // use graph api version 2.8
+    });
 
-	   // Now that we've initialized the JavaScript SDK, we call 
-	   // FB.getLoginStatus().  This function gets the state of the
-	   // person visiting this page and can return one of three states to
-	   // the callback you provide.  They can be:
-	   //
-	   // 1. Logged into your app ('connected')
-	   // 2. Logged into Facebook, but not your app ('not_authorized')
-	   // 3. Not logged into Facebook and can't tell if they are logged into
-	   //    your app or not.
-	   //
-	   // These three cases are handled in the callback function.
+    // Now that we've initialized the JavaScript SDK, we call 
+    // FB.getLoginStatus().  This function gets the state of the
+    // person visiting this page and can return one of three states to
+    // the callback you provide.  They can be:
+    //
+    // 1. Logged into your app ('connected')
+    // 2. Logged into Facebook, but not your app ('not_authorized')
+    // 3. Not logged into Facebook and can't tell if they are logged into
+    //    your app or not.
+    //
+    // These three cases are handled in the callback function.
 
-	   FB.getLoginStatus(function(response) {
-	     statusChangeCallback(response);
-	   });
-	 };
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  };
 
-	 // Load the SDK asynchronously
-	 (function(d, s, id) {
-	   var js, fjs = d.getElementsByTagName(s)[0];
-	   if (d.getElementById(id)) return;
-	   js = d.createElement(s); js.id = id;
-	   js.src = "//connect.facebook.net/en_US/sdk.js";
-	   fjs.parentNode.insertBefore(js, fjs);
-	 }(document, 'script', 'facebook-jssdk'));
 
-	 // Here we run a very simple test of the Graph API after login is
-	 // successful.  See statusChangeCallback() for when this call is made.
-	 function testAPI() {
-	   console.log('Welcome!  Fetching your information.... ');
-	   FB.api('/me', function(response) {
-	     console.log('Successful login for: ' + response.name);
-	     var USERNAME = response.name;
-	     var response = response[0];
-	     console.log(USERNAME);
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 
-	     // Store all content into localStorage
-	     localStorage.setItem("name", USERNAME);
-	     
-	     $("#sign-in-btn").html(localStorage.getItem("name"));
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      var USERNAME = response.name;
+      var response = response[0];
+      console.log(USERNAME);
 
-	     $("#signout").click(function(){
-	   FB.logout();
-	       window.location = "/login";
-	 });
-	   });
-	 }
-	</script>
-</body>
-</html>
+      // Store all content into localStorage
+      localStorage.setItem("name", USERNAME);
+      
+      $("#sign-in-btn").html(localStorage.getItem("name"));
+
+      $("#signout").click(function(){
+    FB.logout();
+        window.location = "/login";
+  });
+        
+    });
+  }
+
+</script>

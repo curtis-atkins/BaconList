@@ -2,17 +2,30 @@ var request = require("request");
 
 var mysql = require("mysql");
 
+// var connection = mysql.createConnection({
+//   host: "p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//   port: 3306,
+
+//   // Your username
+//   user: "cecm0l9b35qd2mv0",
+
+//   // Your password
+//   password: "k3bzmvgljxgpkkx0",
+//   database: "lof3wyne7luqrirs"
+// });
+
 var connection = mysql.createConnection({
-  host: "p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  port: 3306,
-
-  // Your username
-  user: "cecm0l9b35qd2mv0",
-
-  // Your password
-  password: "k3bzmvgljxgpkkx0",
-  database: "lof3wyne7luqrirs"
-});
+    host: "localhost",
+    port: 3306,
+  
+    // Your username
+    user: "root",
+  
+    // Your password
+    password: "Pepper0910",
+    database: "bacon_db"
+  });
+  
 
 connection.connect(function(err) {
     if (err) throw err;
