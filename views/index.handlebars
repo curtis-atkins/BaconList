@@ -33,6 +33,7 @@
 			  {{#each bacon}}
 			  	{{#unless this.sold}}
             <div id={{this.item_id}} class="col-xs-3 text-center itemContainer" >
+              <div id="itemSeller" style="display: none;">{{this.seller_id}}</div>
               <div id="itemImage"><img src={{this.item_image}} alt="Item image" height="140"></div><br>
               <div id="itemName">{{this.item_name}}</div>
               <div id="itemPrice">${{this.item_price}}</div>
@@ -65,6 +66,7 @@
               <input id="itemID" type="hidden" type="text" name="bacon_id"><br>
               <input id="itemPriceForm" type="hidden" type="text" name="bacon_price"><br>
               <input id="userID" type="hidden" type="text" name="bacon_user"><br>
+              <input id="sellerIDForm" type="hidden" type="text" name="bacon_seller"><br>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button id="purchaseBtn" type="submit" class="btn btn-primary">Purchase</button>
           </form>
@@ -85,7 +87,9 @@ $(".buy-it-btn-color").on("click", function() {
   var name = $(this).closest('.col-xs-3').find('#itemName').html();
   price = $(this).closest('.col-xs-3').find('#itemPrice').html();
   var id = $(this).closest('.col-xs-3').attr('id');
-  $('#myModal .modal-body').html('<div class="modalBody" id=' + id + '<p>' + image + '</p><p>' + name + '</p><p>' + price + '</p>');
+  var sellerID = $(this).closest('.col-xs-3').find('#itemSeller').html();
+  console.log("sellerID Button: " + sellerID);
+  $('#myModal .modal-body').html('<div class="sellerIDModal" id="' + sellerID + '" style="display: none;"></div><div class="modalBody" id=' + id + '<p>' + image + '</p><p>' + name + '</p><p>' + price + '</p>');
   $('#myModal').modal('show');
 });
 
@@ -93,7 +97,9 @@ $("#myModal").on("shown.bs.modal", function() {
   $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
   $(this).find('#itemPriceForm').val(price.replace("$", ""));
   $(this).find('#userID').val(ID);
+  $(this).find('#sellerIDForm').val($(this).find('.modal-body > .sellerIDModal').attr('id'));
   console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+  console.log("sellerID: " + $(this).find('.modal-body > .sellerIDModal').attr('id'));
 });
 
 $("#purchaseBtn").on("click", function() {
