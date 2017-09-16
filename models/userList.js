@@ -2,7 +2,7 @@ var orm = require("../config/orm");
 
 var userList = {
   all: function(cb) {
-    orm.all("itemList", function(res) {
+    orm.all("userList", function(res) {
       cb(res);
     });
   },
