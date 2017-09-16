@@ -12,7 +12,7 @@ CREATE TABLE itemList (
 	item_price DECIMAL(12,2) DEFAULT 0.00,
 	item_description VARCHAR(300) DEFAULT NULL,
 	item_image VARCHAR(255) DEFAULT NULL,
-	seller_id VARCHAR(255) DEFAULT NULL,
+	seller_id VARCHAR(255) DEFAULT 'BaconList',
 	sold BOOL DEFAULT false,
 	PRIMARY KEY (item_id)
 );

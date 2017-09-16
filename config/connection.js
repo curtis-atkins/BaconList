@@ -8,7 +8,6 @@ var connection = mysql.createConnection({
     database: "lof3wyne7luqrirs"
 });
 
-
 /*
 var connection = mysql.createConnection({
     host: "127.0.0.1",
