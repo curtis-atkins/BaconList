@@ -57,7 +57,7 @@ var orm = {
     queryString += "VALUES (";
     queryString += printQuestionMarks(vals.length);
     queryString += ") ";
-    console.log(queryString);
+    //console.log(queryString);
     connection.query(queryString, vals, function(err, result) {
       if (err) throw err;
       cb(result);
@@ -72,7 +72,7 @@ var orm = {
     queryString += objToSql(objColVals);
     queryString += " WHERE ";
     queryString += condition;
-    console.log(queryString);
+    //console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) throw err;
       cb(result);
@@ -89,7 +89,7 @@ var orm = {
     queryString += "VALUES (";
     queryString += vals.toString();
     queryString += ") ";
-    console.log(queryString);
+    //console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         var queryString = "UPDATE " + table;
@@ -97,11 +97,16 @@ var orm = {
         queryString += "user_balance = user_balance + " + objColVals['user_balance'];
         queryString += " WHERE ";
         queryString += condition;
-        console.log(queryString);
+        //console.log(queryString);
         connection.query(queryString, function(err, result) {
-          if (err) throw err;
-          cb(result);
+          if (err) {
+            throw err;
+          } else {
+            cb(result);
+          }
         });
+      } else {
+        cb(result);
       }
     });
   }
