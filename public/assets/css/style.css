@@ -72,9 +72,9 @@ body {
   border-radius: 25px;
 }
 
-.navbar-header {
-  background color: #E58966;
-}
+/* .navbar-header {
+  background-color: #E58966;
+} */
 
 .navbar-brand {
   padding:0;
@@ -94,7 +94,7 @@ body {
 .brand-text {
   height: 40px;
   display: inline;
-  font-family: Kanit;
+  font-family: 'Kanit', sans-serif;
   font-size: 30px;
   margin-left: 8px;
 }
@@ -205,4 +205,27 @@ input[type=text] {
 .itemContainer {
   background-color: white;
   margin: 10px 10px;
+  height: 300px;
+  width: 300px;
+  padding-top: 10px;
+  border: 1px solid gray;
+}
+
+#itemName {
+  line-height: 20px;
+  height: 40px;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#itemImage {
+  height: 50%;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.modal-body, .modal-header {
+  text-align: center;
 }

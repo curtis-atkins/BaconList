@@ -30,9 +30,10 @@
 		</div>
     <div class="col-xs-12 text-center" class="task">
 			<div class="row">
+        <div class="col-xs-1 offset-xs-1"></div>
 			  {{#each bacon}}
 			  	{{#unless this.sold}}
-            <div id={{this.item_id}} class="col-xs-3 text-center itemContainer" >
+            <div id={{this.item_id}} class="col-xs-3 offset-xs-1 text-center itemContainer" >
               <div id="itemSeller" style="display: none;">{{this.seller_id}}</div>
               <div id="itemImage"><img src={{this.item_image}} alt="Item image" height="140"></div><br>
               <div id="itemName">{{this.item_name}}</div>
