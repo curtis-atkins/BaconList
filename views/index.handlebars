@@ -89,16 +89,16 @@ $(".buy-it-btn-color").on("click", function() {
   var id = $(this).closest('.col-xs-3').attr('id');
   var sellerID = $(this).closest('.col-xs-3').find('#itemSeller').html();
   console.log("sellerID Button: " + sellerID);
-  $('#myModal .modal-body').html('<div class="sellerIDModal" id="' + sellerID + '" style="display: none;"></div><div class="modalBody" id=' + id + '</div><div>' + image + '</div><br><div style="height: 10px;">' + name + '</div><br><div>' + price + '</div>');
+  $('#myModal .modal-body').html('<div class="sellerIDModal" id="' + sellerID + '" style="display: none;"></div><div class="modalBody" id="' + id + '"></div><div>' + image + '</div><br><div style="height: 10px;">' + name + '</div><br><div>' + price + '</div>');
   $('#myModal').modal('show');
 });
 
 $("#myModal").on("shown.bs.modal", function() {
-  $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+  $(this).find('#itemID').val($(this).find('.modal-body > .modalBody').attr('id'));
   $(this).find('#itemPriceForm').val(price.replace("$", ""));
   $(this).find('#userID').val(ID);
   $(this).find('#sellerIDForm').val($(this).find('.modal-body > .sellerIDModal').attr('id'));
-  console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id').slice(0,-2));
+  console.log("id: " + $(this).find('.modal-body > .modalBody').attr('id'));
   console.log("sellerID: " + $(this).find('.modal-body > .sellerIDModal').attr('id'));
 });
 
